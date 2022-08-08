@@ -1,4 +1,4 @@
-![heading](https://raw.githubusercontent.com/IvanReyhan22/blob/main/images/Heading%20-%20api.png?token=GHSAT0AAAAAABW7LQ56O6KN6DWWEWFOTRBAYXQTEFQ)
+![heading](https://raw.githubusercontent.com/IvanReyhan22/blob/main/images/Heading%20-%20api.png)
 
 <h1 align="center">Presence Express + MongoDB APi</h1>
 <p align="center">Absentee application to simplify the attendance checking process </p>
