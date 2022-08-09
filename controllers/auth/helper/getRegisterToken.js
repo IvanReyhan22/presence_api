@@ -3,7 +3,7 @@ const { generateToken } = require('./generateToken')
 const getRegisterToken = (userInfo = {}) => {
     return new Promise((resolve) => {
         const data = {
-            token: generateToken(userInfo._id),
+            token: "Bearer " + generateToken(userInfo),
             user: userInfo
         }
         resolve(data)

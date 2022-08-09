@@ -1,6 +1,6 @@
 const { validationResult } = require('express-validator')
 const { handleError } = require('./handleError')
-const { buildErrObject } = require('./buildErrObject')
+const { buildErrObject } = require('./utils/buildErrObject')
 
 const validateResult = (req, res, next) => {
     try {

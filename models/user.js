@@ -30,9 +30,11 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true,
     },
-    level: {
-        type: Number,
-        required: true
+    role: {
+        type: String,
+        enum: ['user', 'supervisor', 'admin'],
+        required: true,
+        default: 'user'
     },
     profilePic: {
         type: String

@@ -1,9 +1,8 @@
 const crypto = require('crypto')
-const secret = process.env.CRYPTO_KEY
-const algorithm = 'aes-256-cbc'
 
-const key = crypto.scryptSync(secret, 'spicy', 32)
-// crypto vector
+const secret = process.env.JWT_SECRET
+const algorithm = 'aes-256-cbc'
+const key = crypto.scryptSync(secret, 'salt', 32)
 const iv = Buffer.alloc(16, 0)
 
 const encrypt = (value = '') => {

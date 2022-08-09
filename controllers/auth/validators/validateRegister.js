@@ -24,6 +24,18 @@ const validateRegister = [
         .withMessage('IS_EMPTY')
         .isLength({ min: 5 })
         .withMessage('PASSWORD_TOO_SHORT_MIN_5'),
+    check('personalId')
+        .exists()
+        .withMessage('MISSING')
+        .not()
+        .isEmpty()
+        .withMessage('IS_EMPTY'),
+    check('departementId')
+        .exists()
+        .withMessage('MISSING')
+        .not()
+        .isEmpty()
+        .withMessage('IS_EMPTY'),
     (req, res, next) => {
         validateResult(req, res, next)
     }

@@ -14,7 +14,6 @@ const login = async (req, res) => {
         } else {
             handleError(res, buildErrObject(409, "User credential is incorrect"))
         }
-
     } catch (error) {
         handleError(res, error)
     }

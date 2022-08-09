@@ -1,9 +1,10 @@
 const { removeExtensionFromFile } = require('./removeExtensionFromFile')
-const { buildErrObject } = require('./buildErrObject')
+const { buildErrObject } = require('./utils/buildErrObject')
 const { handleError } = require('./handleError')
 const { validateResult } = require('./validateResult')
 const { handleResponse } = require('./handleResponse')
 const { encrypt } = require('./encrypt')
+const { decrypt } = require('./decrypt')
 
 module.exports = {
     removeExtensionFromFile,
@@ -11,5 +12,6 @@ module.exports = {
     handleError,
     validateResult,
     handleResponse,
-    encrypt
+    encrypt,
+    decrypt
 }

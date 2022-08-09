@@ -9,7 +9,7 @@ const registerUser = (req = {}) => {
             personalId: req.personalId,
             password: req.password,
             departementId: req.departementId,
-            level: req.level,
+            role: req.role,
             profilePic: req.profilePic,
         })
         user.save((err, item) => {

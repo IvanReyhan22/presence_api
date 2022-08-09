@@ -1,4 +1,5 @@
 const { buildErrObject } = require('../../../middleware')
+const { itemNotFound } = require('../../../middleware/utils')
 const User = require('../../../models/user')
 
 const findUser = (email = '') => {
@@ -6,14 +7,14 @@ const findUser = (email = '') => {
         User.findOne(
             {
                 email,
-            }, 'id name email personalId departementId level profilePic password',
+            }, 'id name email personalId departementId role profilePic password',
             async (err, item) => {
                 try {
-                    if (err) {
-                        resolve(buildErrObject(422, err.message))
-                    }
-                    if (item) {
-                        resolve(item)
+                    const check = await itemNotFound(err, item)
+                    if (check) {
+                        return resolve(item)
+                    } else {
+                        return reject(buildErrObject(422, "User not found"))
                     }
                 } catch (error) {
                     reject(err)

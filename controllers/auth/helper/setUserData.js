@@ -6,7 +6,7 @@ const setUserData = (req = {}) => {
             email: req.email,
             personalId: req.personalId,
             departementId: req.departementId,
-            level: req.level,
+            role: req.role,
             profilePic: req.profilePic,
         }
         resolve(user)
