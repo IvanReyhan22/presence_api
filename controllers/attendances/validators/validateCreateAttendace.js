@@ -1,45 +1,47 @@
-const { validateResult } = require('../../../middleware')
 const { check } = require('express-validator')
+const { validateResult } = require('../../../middleware')
 
-const validateRegister = [
-    check('name')
+const validateCreateAttendance = [
+    check('user_id')
         .exists()
         .withMessage('MISSING')
         .not()
         .isEmpty()
         .withMessage('IS_EMPTY'),
-    check('email')
-        .exists()
-        .withMessage('MISSING')
-        .not()
-        .isEmpty()
-        .withMessage('IS_EMPTY')
-        .isEmail()
-        .withMessage('EMAIL_IS_NOT_VALID'),
-    check('password')
-        .exists()
-        .withMessage('MISSING')
-        .not()
-        .isEmpty()
-        .withMessage('IS_EMPTY')
-        .isLength({ min: 5 })
-        .withMessage('PASSWORD_TOO_SHORT_MIN_5'),
-    check('personalId')
+    check('department_id')
         .exists()
         .withMessage('MISSING')
         .not()
         .isEmpty()
         .withMessage('IS_EMPTY'),
-    check('departmentCode')
+    check('shift_id')
         .exists()
         .withMessage('MISSING')
         .not()
         .isEmpty()
         .withMessage('IS_EMPTY'),
-    check('profilePic'),
+    // check('checkIn')
+    //     .exists()
+    //     .withMessage('MISSING')
+    //     .not()
+    //     .isEmpty()
+    //     .withMessage('IS_EMPTY'),
+    // check('checkOut'),
+    check('address')
+        .exists()
+        .withMessage('MISSING')
+        .not()
+        .isEmpty()
+        .withMessage('IS_EMPTY'),
+    check('loc')
+        .exists()
+        .withMessage('MISSING')
+        .not()
+        .isEmpty()
+        .withMessage('IS_EMPTY'),
     (req, res, next) => {
         validateResult(req, res, next)
     }
 ]
 
-module.exports = { validateRegister }
+module.exports = { validateCreateAttendance }

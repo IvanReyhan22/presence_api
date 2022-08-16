@@ -1,10 +1,11 @@
 const { getRegisterToken, checkPassword, setUserData } = require('../auth/helper')
 const { handleError, handleResponse, buildErrObject } = require('../../middleware')
 const { findUser } = require('./helper/findUser')
+const { matchedData } = require('express-validator')
 
 const login = async (req, res) => {
     try {
-        req = req.body
+        req = matchedData(req)
         const user = await findUser(req.email)
         const isPasswordMatch = await checkPassword(req.password, user)
         if (isPasswordMatch) {

@@ -26,9 +26,14 @@ const UserSchema = mongoose.Schema({
         required: true,
         select: false
     },
-    departementId: {
-        type: String,
-        required: true,
+    departmentId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Department"
+    },
+    shiftId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Shift",
+        default: null
     },
     role: {
         type: String,
@@ -37,7 +42,8 @@ const UserSchema = mongoose.Schema({
         default: 'user'
     },
     profilePic: {
-        type: String
+        type: String,
+        default: null
     },
     updated_at: {
         type: Date

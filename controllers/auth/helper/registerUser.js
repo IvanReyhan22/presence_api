@@ -6,10 +6,11 @@ const registerUser = (req = {}) => {
         const user = new User({
             name: req.name,
             email: req.email,
-            personalId: req.personalId,
             password: req.password,
-            departementId: req.departementId,
-            role: req.role,
+            personalId: req.personalId,
+            departmentId: req.departmentId,
+            shiftId: null,
+            role: 'user',
             profilePic: req.profilePic,
         })
         user.save((err, item) => {

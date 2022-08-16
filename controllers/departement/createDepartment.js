@@ -1,10 +1,11 @@
+const { matchedData } = require('express-validator')
 const { handleError, handleResponse, buildErrObject } = require('../../middleware')
-const { getItemBy, createItem } = require('../../middleware/db')
+const { getItemsBy, createItem } = require('../../middleware/db')
 const Department = require('../../models/department')
 
 const createDepartment = async (req, res) => {
     try {
-        req = req.body
+        req = matchedData(req)
         const query = {
             "$or": [
                 {
@@ -15,8 +16,8 @@ const createDepartment = async (req, res) => {
                 }
             ]
         }
-        const isExist = await getItemBy(query, Department)
-        if (!isExist) {
+        const isExist = await getItemsBy(query, null, null, Department)
+        if (isExist.length < 1) {
             handleResponse(res, "success", await createItem(req, Department))
         } else {
             handleError(res, buildErrObject(409, "Departement already registered"))

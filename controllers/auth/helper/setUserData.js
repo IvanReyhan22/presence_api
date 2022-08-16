@@ -5,7 +5,8 @@ const setUserData = (req = {}) => {
             name: req.name,
             email: req.email,
             personalId: req.personalId,
-            departementId: req.departementId,
+            departmentId: req.departmentId,
+            shiftId: req.shiftId,
             role: req.role,
             profilePic: req.profilePic,
         }

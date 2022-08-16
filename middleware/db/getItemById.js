@@ -1,6 +1,6 @@
 const { itemNotFound } = require("../utils/itemNotFound")
 
-const getItem = (id = '', model = {}) => {
+const getItemById = (id = '', model = {}) => {
     return new Promise((resolve, reject) => {
         model.findById(id, async (err, item) => {
             try {
@@ -13,4 +13,4 @@ const getItem = (id = '', model = {}) => {
     })
 }
 
-module.exports = { getItem }
+module.exports = { getItemById }

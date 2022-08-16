@@ -7,7 +7,7 @@ const findUser = (email = '') => {
         User.findOne(
             {
                 email,
-            }, 'id name email personalId departementId role profilePic password',
+            }, 'id name email personalId departmentId shiftId role profilePic password',
             async (err, item) => {
                 try {
                     const check = await itemNotFound(err, item)

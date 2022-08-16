@@ -1,23 +1,24 @@
-const { validateResult } = require('../../../middleware')
 const { check } = require('express-validator')
+const { validateResult } = require("../../../middleware")
 
-const validateCreateDepartment = [
+const validateCreateShift = [
     check('name')
         .exists()
         .withMessage('MISSING')
         .not()
         .isEmpty()
         .withMessage('IS_EMPTY'),
-    check('departmentCode')
+    check('departmentId'),
+    check('checkIn')
         .exists()
         .withMessage('MISSING')
         .not()
         .isEmpty()
         .withMessage('IS_EMPTY'),
-    check('description'),
+    check('checkOut'),
     (req, res, next) => {
         validateResult(req, res, next)
     }
 ]
 
-module.exports = { validateCreateDepartment }
+module.exports = { validateCreateShift }

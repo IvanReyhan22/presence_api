@@ -12,6 +12,9 @@ const {
     validateRegister,
     validateResetPassword
 } = require('../controllers/auth/validators')
+const { handleError, handleResponse } = require('../middleware')
+const { getAllItem } = require('../middleware/db')
+const user = require('../models/user')
 
 /**
  * Login Route

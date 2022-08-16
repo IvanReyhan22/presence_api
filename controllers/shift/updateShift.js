@@ -1,14 +1,14 @@
 const { matchedData } = require("express-validator")
 const { handleError, handleResponse, buildErrObject } = require("../../middleware")
-const { deleteItem, getItemById } = require("../../middleware/db")
-const Department = require("../../models/department")
+const { getItemById, updateItem } = require("../../middleware/db")
+const Shift = require("../../models/shift")
 
-const deleteDepartment = async (req, res) => {
+const updateShift = async (req, res) => {
     try {
         req = matchedData(req)
-        const isExist = await getItemById(req.id, Department)
+        const isExist = await getItemById(req.id, Shift)
         if (isExist) {
-            handleResponse(res, "item deleted", await deleteItem(req.id, Department))
+            handleResponse(res, "success", await updateItem(req.id, req, Shift))
         } else {
             handleError(res, buildErrObject(422, "item not found"))
         }
@@ -17,4 +17,4 @@ const deleteDepartment = async (req, res) => {
     }
 }
 
-module.exports = { deleteDepartment }
+module.exports = { updateShift }

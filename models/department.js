@@ -11,7 +11,7 @@ const DepartmentScheme = mongoose.Schema({
     departmentCode: {
         type: String,
         require: true
-    }
+    },
 })
 
 module.exports = mongoose.model('Department', DepartmentScheme)
