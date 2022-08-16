@@ -4,17 +4,17 @@ const { Time } = require('./property/time')
 
 const AttendanceScheme = mongoose.Schema(
     {
-        user: {
+        userId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         },
-        department: {
+        departmentId: {
             type: mongoose.Schema.Types.ObjectId,
-            require: "Department"
+            ref: "Department"
         },
-        shift: {
-            type: String,
-            require: true
+        shiftId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Shift"
         },
         checkIn: Time,
         checkOut: Time,
