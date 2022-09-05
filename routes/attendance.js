@@ -10,12 +10,20 @@ const { roleCheck } = require('../middleware/auth')
 
 const {
     getAllAttendance,
-    createAttendance
-} = require('../controllers/attendances')
+    checkIn,
+    checkOut,
+    checkStatus,
+    updateAttendance,
+    deleteAttendance
+} = require('../controllers/attendance')
 
 const {
-    validateCreateAttendance
-} = require('../controllers/attendances/validators')
+    validateCheckIn,
+    validateCheckOut,
+    validateCheckStatus,
+    validateUpdateAttendance,
+    validateDeleteAttendance
+} = require('../controllers/attendance/validators')
 
 /**
  * Get All Attendance
@@ -23,8 +31,29 @@ const {
 router.get('/', requireAuth, roleCheck(['supervisor', 'admin']), getAllAttendance)
 
 /**
- * Create Attendance
+ * Check Attendance status
  */
-router.post('/', requireAuth, roleCheck(['user', 'supervisor', 'admin']), validateCreateAttendance, createAttendance)
+router.get('/status/:id', requireAuth, roleCheck(['user', 'supervisor', 'admin']), validateCheckStatus, checkStatus)
+
+/**
+ * Check In
+ */
+router.post('/', requireAuth, roleCheck(['user', 'supervisor', 'admin']), validateCheckIn, checkIn)
+
+/**
+ * Check out
+ */
+router.patch('/checkout', requireAuth, roleCheck(['user', 'supervisor', 'admin']), validateCheckOut, checkOut)
+
+/**
+ * Update Attendance
+ */
+router.patch('/:id', requireAuth, roleCheck(['supervisor', 'admin']), validateUpdateAttendance, updateAttendance)
+
+/**
+ * Delete Attendance
+ */
+router.delete('/:id', requireAuth, roleCheck(['supervisor', 'admin']), validateDeleteAttendance, deleteAttendance)
+
 
 module.exports = router

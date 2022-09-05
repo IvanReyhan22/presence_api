@@ -28,11 +28,10 @@ const AttendanceScheme = mongoose.Schema(
             type: String,
             require: true
         },
-        loc: Geo
-    },
-    {
-        versionKey: false,
-        timestamps: true
+        loc: Geo,
+        permit: {
+            type: String,
+        }
     }
 )
 

@@ -11,8 +11,8 @@ require('./config/mongo')
 
 app.use(cors())
 app.use(passport.initialize())
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/storage', express.static('storage'), serveIndex('storage'))
 app.use('/', require('./routes'))
 

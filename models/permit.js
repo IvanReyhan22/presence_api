@@ -3,14 +3,17 @@ const mongoose = require('mongoose')
 const PermitScheme = mongoose.Schema({
     subject: {
         type: String,
-        require: true
     },
     reason: {
         type: String,
         require: true
     },
-    other: {
+    document: {
         type: String
+    },
+    date: {
+        type: Date,
+        require: true
     }
 })
 

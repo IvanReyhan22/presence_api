@@ -5,7 +5,7 @@ const itemNotFound = (err = {}, item) => {
         if (err) {
             return reject(buildErrObject(422, err.message))
         } else if (!item || item.length < 1) {
-            return resolve(false)
+            return reject(buildErrObject(404, "item not found"))
         } else {
             return resolve(item)
         }

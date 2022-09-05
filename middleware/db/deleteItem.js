@@ -5,7 +5,7 @@ const deleteItem = (id = '', model = {}) => {
         model.findByIdAndRemove(id, async (err, item) => {
             try {
                 const check = await itemNotFound(err, item)
-                resolve(check)
+                resolve(check == null ? true : check)
             } catch (error) {
                 reject(err)
             }

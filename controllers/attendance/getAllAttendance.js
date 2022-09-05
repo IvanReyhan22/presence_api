@@ -1,5 +1,5 @@
 const { handleResponse, handleError } = require("../../middleware")
-const { getAllItem } = require("../../middleware/db")
+const { getItemsBy } = require("../../middleware/db")
 const Attendance = require('../../models/attendance')
 
 const getAllAttendance = async (req, res) => {
@@ -7,7 +7,7 @@ const getAllAttendance = async (req, res) => {
         const sort = {
             date: 1
         }
-        handleResponse(res, "success", await getAllItem(null, null, sort, Attendance))
+        handleResponse(res, "success", await getItemsBy(null, null, sort, Attendance))
     } catch (error) {
         handleError(res, error)
     }

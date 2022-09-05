@@ -1,6 +1,6 @@
 const Time = {
     date: {
-        type: Date,
+        type: String,
         require: true
     },
     time: {

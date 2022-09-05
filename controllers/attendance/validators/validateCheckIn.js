@@ -1,7 +1,7 @@
 const { check } = require('express-validator')
 const { validateResult } = require('../../../middleware')
 
-const validateCreateAttendance = [
+const validateCheckIn = [
     check('user_id')
         .exists()
         .withMessage('MISSING')
@@ -44,4 +44,4 @@ const validateCreateAttendance = [
     }
 ]
 
-module.exports = { validateCreateAttendance }
+module.exports = { validateCheckIn }
