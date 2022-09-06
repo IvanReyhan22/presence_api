@@ -22,8 +22,9 @@ fs.readdirSync(routesPath).filter((file) => {
 /*
  * Index Route
  */
-app.get('/', (req, res) => {
-    res.send('Presence Api Gateway')
+router.get('/', (req, res) => {
+    res.send('Presence Api Gateway v1')
 })
+
 
 module.exports = router
