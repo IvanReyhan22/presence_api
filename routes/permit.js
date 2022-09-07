@@ -7,10 +7,11 @@ const requireAuth = passport.authenticate('jwt', {
 })
 const { roleCheck } = require('../middleware/auth')
 
-const { validateCreatePermit, validateGetPermit, validateDeletePermit } = require('../controllers/permit/validators')
+const { validateCreatePermit, validateGetPermit, validateDeletePermit, validateUpdatePermit, validateUpdatePermitDocument } = require('../controllers/permit/validators')
 
-const { getAllPermit, createPermit, getPermit, deletePermit } = require('../controllers/permit')
+const { getAllPermit, createPermit, getPermit, deletePermit, updatePermitDocument } = require('../controllers/permit')
 const { fileUpload } = require('../middleware/utils')
+const { updatePermit } = require('../controllers/permit/updatePermit')
 
 
 /**
@@ -28,7 +29,16 @@ router.get('/:id', requireAuth, roleCheck(['supervisor', 'admin']), validateGetP
  */
 router.post('/', requireAuth, roleCheck(['user', 'supervisor', 'admin']), validateCreatePermit, fileUpload.single('document'), createPermit)
 
+/**
+ * Update Permit
+ */
+router.patch('/update/:id', requireAuth, roleCheck(['supervisor', 'admin']), validateUpdatePermit, updatePermit)
 
+/**
+ * Update Permit Document
+ */
+
+router.patch('/update/document/:id', requireAuth, roleCheck(['user', 'supervisor', 'admin']), validateUpdatePermitDocument, fileUpload.single('document'), updatePermitDocument)
 /**
  * Delete Permit
  */
