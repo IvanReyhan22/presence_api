@@ -1,9 +1,12 @@
 const { buildErrObject } = require("../utils")
 
-const getPopulation = (lookup = {}, model = {}) => {
+const getPopulation = (match = {}, lookup = {}, model = {}) => {
     return new Promise((resolve, reject) => {
         model.aggregate(
             [
+                {
+                    $match: match
+                },
                 {
                     $lookup: lookup
                 }

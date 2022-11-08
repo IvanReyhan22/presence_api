@@ -14,6 +14,15 @@ const PermitScheme = mongoose.Schema({
     date: {
         type: Date,
         require: true
+    },
+    status: {
+        type: Number,
+        require: true
+    },
+    approvedBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        require: false
     }
 })
 
