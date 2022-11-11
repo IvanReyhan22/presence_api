@@ -1,16 +1,8 @@
 const { buildErrObject } = require("../utils")
 
-const getPopulation = (match = {}, lookup = {}, model = {}) => {
+const getPopulation = (aggregate = {}, model = {}) => {
     return new Promise((resolve, reject) => {
-        model.aggregate(
-            [
-                {
-                    $match: match
-                },
-                {
-                    $lookup: lookup
-                }
-            ],
+        model.aggregate(aggregate,
             async (err, item) => {
                 if (err) {
                     return reject(buildErrObject(422, err.message))

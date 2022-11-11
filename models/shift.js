@@ -13,10 +13,10 @@ const ShiftSchema = mongoose.Schema({
     checkOut: {
         type: String
     },
-    department: {
+    departmentId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Department"
-    }
+    },
 })
 
 module.exports = mongoose.model('Shift', ShiftSchema)

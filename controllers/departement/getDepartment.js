@@ -7,17 +7,30 @@ const { default: mongoose } = require("mongoose")
 const getDepartment = async (req, res) => {
     try {
         req = matchedData(req)
-        const match = {
-            _id: mongoose.Types.ObjectId(req.id)
-        }
-        const lookup = {
-            from: 'users',
-            localField: '_id',
-            foreignField: 'departmentId',
-            as: 'workers'
-        }
-        const isExist = await getPopulation(match, lookup, Department)
-        console.log(match)
+        const aggregate = [
+            {
+                $match: {
+                    _id: mongoose.Types.ObjectId(req.id)
+                }
+            },
+            // {
+            //     $lookup: {
+            //         from: 'users',
+            //         localField: '_id',
+            //         foreignField: 'departmentId',
+            //         as: 'workers'
+            //     }
+            // },
+            {
+                $lookup: {
+                    from: 'shifts',
+                    localField: '_id',
+                    foreignField: 'departmentId',
+                    as: 'shifts'
+                }
+            },
+        ]
+        const isExist = await getPopulation(aggregate, Department)
         if (isExist) {
             handleResponse(res, "success", isExist[0])
         }

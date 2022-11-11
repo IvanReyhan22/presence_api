@@ -1,5 +1,5 @@
 const { handleError, handleResponse } = require("../../middleware")
-const { findUser, setUserData, updatePassword } = require("./helper")
+const { findUser, updatePassword } = require("./helper")
 
 const resetPassword = async (req, res) => {
     try {
