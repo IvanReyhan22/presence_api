@@ -6,7 +6,7 @@ const handleError = (res = {}, err = {}) => {
     // Sends error to user
     res.status(err.code).json({
         status: err.code,
-        errors: err.message
+        msg: err.message
     })
 }
 

@@ -11,7 +11,7 @@ const validateResult = (req, res, next) => {
         }
         return next()
     } catch (err) {
-        return handleError(res, buildErrObject(422, err.array()))
+        return handleError(res, buildErrObject(422, err.errors[0].msg))
     }
 }
 

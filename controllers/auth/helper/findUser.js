@@ -14,10 +14,10 @@ const findUser = (email = '') => {
                     if (check) {
                         return resolve(item)
                     } else {
-                        return reject(buildErrObject(422, "User not found"))
+                        return reject(buildErrObject(422, "User with email not registered"))
                     }
                 } catch (error) {
-                    reject(err)
+                    reject(buildErrObject(422, "User with email not registered"))
                 }
             }
         )
